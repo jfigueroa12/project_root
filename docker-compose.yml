@@ -5,7 +5,10 @@ services:
     build: .
     working_dir: /django_beginner_apps/
     command: python3 ./$PROJECTNAME/manage.py runserver 0.0.0.0:8000
+
+    # remember to remove volumes or comment out when deploying to production
     volumes:
       - .:/django_beginner_apps
+    
     ports:
       - "8000:8000"
