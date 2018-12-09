@@ -4,6 +4,10 @@ from django.urls import reverse
 
 # Create your tests here.
 
+# Anytime you run tests, all tests from all apps will run.
+# Disabled tests for this module
+
+"""
 class PostModelTest(TestCase):
 
     def setUp(self):
@@ -33,3 +37,5 @@ class HomePageViewTest(TestCase):
         resp = self.client.get(reverse('home'))
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'home.html')
+
+"""
