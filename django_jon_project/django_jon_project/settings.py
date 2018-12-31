@@ -34,15 +34,14 @@ ALLOWED_HOSTS = ['54.160.218.4',
 # Application definition
 
 INSTALLED_APPS = [
+    'blog',
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pages',
-    'posts',
-    'blog',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +127,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'project_static'),
 ]
+
+LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'home'
