@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['54.160.218.4',
     'localhost',
     '34.200.213.192',
+    'gunicorn',
 
 ]
 
