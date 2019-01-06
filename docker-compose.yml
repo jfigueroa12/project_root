@@ -3,12 +3,26 @@ version: '3'
 services:
   web:
     build: .
-    working_dir: /django_beginner_apps/
-    command: python3 ./$PROJECTNAME/manage.py runserver 0.0.0.0:8000
+    working_dir: /django_beginner_apps/$PROJECTNAME/
+    command: gunicorn -b 0.0.0.0:8000 django_jon_project.wsgi
 
     # remember to remove volumes or comment out when deploying to production
     volumes:
       - .:/django_beginner_apps
-    
+    #networks:
+    #  - nginx
+
+  nginx:
+    build: ./nginx
     ports:
-      - "8000:8000"
+      - "8000:80"
+    volumes:
+      - ./$PROJECTNAME/project_static/:/webserver/static_content/
+    depends_on:
+      - web
+    #networks:
+    #  - nginx
+
+#networks:
+  #nginx:
+    #driver: bridge
