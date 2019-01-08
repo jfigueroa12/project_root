@@ -16,8 +16,9 @@ services:
     build: ./nginx
     ports:
       - "8000:80"
-    volumes:
-      - ./$PROJECTNAME/project_static/:/webserver/static_content/
+    #volumes:
+    # Not needed since we are serving statci files from Amazon s3
+    #  - ./$PROJECTNAME/project_static/:/webserver/static_content/
     depends_on:
       - web
     #networks:
