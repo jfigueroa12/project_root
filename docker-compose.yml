@@ -24,6 +24,12 @@ services:
     #networks:
     #  - nginx
 
+  db:
+    build: ./postgres
+    hostname: db
+    volumes:
+      - ./postgres/postgres_data:/var/lib/postgresql/data/
+
 #networks:
   #nginx:
     #driver: bridge
