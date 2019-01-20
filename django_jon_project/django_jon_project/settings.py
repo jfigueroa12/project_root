@@ -128,10 +128,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-AWS_STORAGE_BUCKET_NAME = 'django-jon-project-static'
+AWS_STORAGE_BUCKET_NAME =  os.getenv('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_REGION_NAME = 'us-east-1'  # e.g. us-east-2
-AWS_ACCESS_KEY_ID = 'AKIAJLH2KS74CKUDATBA'
-AWS_SECRET_ACCESS_KEY = '8mlfbFiGqSaA4QBc7Muc83j68qyi2gsSUPa3jauq'
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 
 # Tell django-storages the domain to use to refer to static files.
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME

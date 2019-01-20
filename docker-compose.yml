@@ -9,6 +9,8 @@ services:
     # remember to remove volumes or comment out when deploying to production
     volumes:
       - .:/django_beginner_apps
+    env_file:
+      - .env
     #networks:
     #  - nginx
 
