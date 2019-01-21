@@ -30,7 +30,8 @@ services:
     build: ./postgres
     hostname: db
     volumes:
-      - /home/centos/django_beginner_apps/django_jon_project/postgres/postgres_data:/var/lib/postgresql/data/
+      #- /home/centos/django_beginner_apps/django_jon_project/postgres/postgres_data:/var/lib/postgresql/data/
+      - ./postgres/postgres_data:/var/lib/postgresql/data/
     depends_on:
       - web
       - nginx
