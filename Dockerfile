@@ -1,7 +1,9 @@
 FROM python:3
-RUN mkdir /django_beginner_apps
+ARG PROJECTNAME
+ARG ROOT_FOLDER
+RUN mkdir /$ROOT_FOLDER/
 RUN apt-get -y update && apt-get -y install vim
-WORKDIR /django_beginner_apps
-ADD requirements.txt /django_beginner_apps/
+WORKDIR /$ROOT_FOLDER/
+ADD requirements.txt /$ROOT_FOLDER/
 RUN pip install -r requirements.txt
-ADD . /django_beginner_apps/
+ADD . /$ROOT_FOLDER/

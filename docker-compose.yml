@@ -2,40 +2,31 @@ version: '3'
 
 services:
   web:
-    build: .
-    working_dir: /django_beginner_apps/$PROJECTNAME/
-    command: gunicorn -b 0.0.0.0:8000 django_jon_project.wsgi
-
-    # remember to remove volumes or comment out when deploying to production
+    build:
+      context: .
+      args:
+        PROJECTNAME: $PROJECTNAME
+        ROOT_FOLDER: $ROOT_FOLDER
+    working_dir: /$ROOT_FOLDER/$PROJECTNAME/
+    #tty: true
     volumes:
-      - .:/django_beginner_apps
+      - .:/$ROOT_FOLDER
     env_file:
       - .env
-    #networks:
-    #  - nginx
+    command: gunicorn -b 0.0.0.0:8000 $PROJECTNAME.wsgi
 
   nginx:
     build: ./nginx
     ports:
       - "8000:80"
-    #volumes:
-    # Not needed since we are serving statci files from Amazon s3
-    #  - ./$PROJECTNAME/project_static/:/webserver/static_content/
     depends_on:
       - web
-    #networks:
-    #  - nginx
 
   db:
     build: ./postgres
     hostname: db
     volumes:
-      #- /home/centos/django_beginner_apps/django_jon_project/postgres/postgres_data:/var/lib/postgresql/data/
       - ./postgres/postgres_data:/var/lib/postgresql/data/
     depends_on:
       - web
       - nginx
-
-#networks:
-  #nginx:
-    #driver: bridge
