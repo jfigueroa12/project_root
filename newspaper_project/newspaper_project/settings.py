@@ -31,7 +31,13 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # Local
     'users',
+    'pages',
+
+    # Third Party
+    'crispy_forms',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -145,3 +151,6 @@ LOGOUT_REDIRECT_URL = 'home'
 # Customer user model
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+# Crispy Forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
