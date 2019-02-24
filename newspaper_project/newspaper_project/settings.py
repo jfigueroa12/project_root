@@ -138,11 +138,9 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATIC_URL = '/static/'
 
-#STATIC_ROOT = os.path.join(BASE_DIR, 'project_static')
+LOGIN_REDIRECT_URL = 'home'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'project_static'),
-]
+LOGOUT_REDIRECT_URL = 'home'
 
 # Customer user model
 
